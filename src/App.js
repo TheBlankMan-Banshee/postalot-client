@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SignIn from './containers/signin/signin';
-import Register from './containers/register/register';
+import SignIn from './containers/signin/signIn';
+import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
 import Particles from 'react-particles-js';
 import 'tachyons';
@@ -36,7 +36,7 @@ const particlesOptions = {
 
 // state when user logs in
 const initialState = {
-  route: 'signin',
+  route: 'signIn',
   isSignedIn: false,
   userProfile: {
       id: '',
@@ -80,7 +80,7 @@ class App extends Component {
           <div>
               POSTALOT being maintained...
           </div> : (
-            route === 'signin' ?
+            route === 'signIn' ?
             <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/> :
             <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
