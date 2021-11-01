@@ -25,7 +25,7 @@ class Register extends Component {
     onRegister = () => {
         fetch('https://postalot-server.herokuapp.com/Register', { 
             method: 'post',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*'},
             body: JSON.stringify({
                 name: this.state.name,
                 email: this.state.email,

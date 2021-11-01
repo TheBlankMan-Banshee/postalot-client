@@ -23,7 +23,7 @@ class SignIn extends Component {
     onSubmitSignIn = () => {
         fetch('https://postalot-server.herokuapp.com/signIn', { // fetch implements by default the GET method
             method: 'post',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content-Type':'application/json','Access-Control-Allow-Origin': '*'},
             body: JSON.stringify({ // send JSON object back as string to server
                 email: this.state.signInEmail,
                 password: this.state.signInPassword
