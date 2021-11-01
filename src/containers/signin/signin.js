@@ -30,7 +30,6 @@ class SignIn extends Component {
             })
         })
         .then(res => res.json())
-        .then(console.log('User signed in!'))
         .then(user => {
             if (user.id) { // Check if user with this id exists
                 this.props.loadUser(user);
