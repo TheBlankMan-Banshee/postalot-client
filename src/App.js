@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import SignIn from './containers/signin/signIn';
+import SignIn from './containers/signin/SignIn';
 import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
 import Particles from 'react-particles-js';
