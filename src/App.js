@@ -36,7 +36,7 @@ const particlesOptions = {
 
 // state when user logs in
 const initialState = {
-  route: 'signIn',
+  route: 'signin',
   isSignedIn: false,
   userProfile: {
       id: '',
