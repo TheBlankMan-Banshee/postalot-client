@@ -27,7 +27,7 @@ class Register extends Component {
             method: 'post',
             mode: 'cors',
             credentials: 'omit',
-            headers: {'Content-Type':'application/json'},
+            headers: {'Content-Type':'application/json','Accesss-Control-Allow-Origin':'https://postalot-server.herokuapp.com'},
             body: JSON.stringify({
                 name: this.state.name,
                 email: this.state.email,
