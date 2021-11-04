@@ -42,8 +42,7 @@ class Register extends Component {
         })
         .catch(err => {
             console.error(err);
-        })
-        ;
+        });
     }
 
     render() {
