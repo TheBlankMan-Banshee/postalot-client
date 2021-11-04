@@ -33,7 +33,7 @@ class Register extends Component {
                 password: this.state.password
             })
         })
-        .then(res => console.log(res))
+        .then(res => console.log(res.body))
         .then(res => res.json())
         .then(user => {
             if (user.id) {
