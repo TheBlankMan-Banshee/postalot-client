@@ -7,7 +7,6 @@ import Particles from 'react-tsparticles';
 import 'tachyons';
 
 const particlesOptions = {
-  fpsLimit: 60,
   particles: {
     color: {
       value: "#ffffff",
@@ -45,7 +44,7 @@ const particlesOptions = {
     },
     size: {
       random: true,
-      value: 5,
+      value: 6,
     },
   },
   detectRetina: true

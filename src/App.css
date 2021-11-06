@@ -16,3 +16,16 @@
   right: 0;
   z-index: -1;
 }
+
+#firstName {
+   padding: 1.5em;
+}
+#lastName {
+  padding: 1.5em;
+}
+#email {
+  padding: 1.5em;
+}
+#password {
+  padding: 1.5em;
+}

@@ -32,7 +32,6 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     console.log({
       email: data.get('email'),
       password: data.get('password'),
@@ -69,6 +68,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  sx={{backgroundColor:'none'}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

@@ -1,84 +1,111 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import PersonIcon from '@mui/icons-material/Person';
 
-class SignIn extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            signInEmail: '',
-            signInPassword: ''
-        }
-    }
-
-    // Event on email input
-    onEmailChange = (event) => {
-        this.setState({signInEmail: event.target.value});
-    }
-
-    // Event on password input
-    onPasswordChange = (event) => {
-        this.setState({signInPassword: event.target.value});
-    }
-
-    // Event on sign In button
-    onSubmitSignIn = () => {
-        fetch('https://postalot-server.herokuapp.com/signIn', { // fetch implements by default the GET method
-            method: 'post',
-            mode: 'cors',
-            headers: {'Content-Type':'application/json','Accesss-Control-Allow-Origin':'https://postalot-server.herokuapp.com'},
-            body: JSON.stringify({ // send JSON object back as string to server
-                email: this.state.signInEmail,
-                password: this.state.signInPassword
-            })
-        })
-        .then(res => res.json())
-        .then(user => {
-            if (user.id) { // Check if user with this id exists
-                this.props.loadUser(user);
-                this.props.onRouteChange('Home');
-            }
-        });
-    }
-
-    render() {
-        const {onRouteChange} = this.props;
-         return (
-            <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-                <main className="pa4 black-80">
-                    <div className="measure">
-                        <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="f1 fw6 ph0 mh0">Sign In</legend>
-                            <div className="mt3">
-                                <label  className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                                <input onChange={this.onEmailChange} 
-                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                type="email"
-                                name="email-address"  
-                                id="email-address"/>
-                            </div>
-                            <div className="mv3">
-                                <label  className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                                <input onChange={this.onPasswordChange} 
-                                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                type="password" 
-                                name="password"  
-                                id="password"/>
-                            </div>
-                        </fieldset>
-                        <div className="">
-                            {/* Event declared above fires when clicking on the button */}
-                            <input onClick={this.onSubmitSignIn} 
-                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                            type="submit" 
-                            value="Sign in"/>
-                        </div>
-                        <div className="lh-copy mt3">
-                            <p onClick={() => onRouteChange('Register')} className="f6 link dim black db pointer">Register</p>
-                        </div>
-                    </div>
-                </main>
-            </article>
-        );
-    } 
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Postalot
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default SignIn;
+const theme = createTheme();
+
+export default function SignIn() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // eslint-disable-next-line no-console
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
+    });
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <PersonIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  );
+}
