@@ -7,11 +7,6 @@ import Particles from 'react-tsparticles';
 import 'tachyons';
 
 const particlesOptions = {
-  background: {
-    color: {
-      value: "#0d47a1",
-    },
-  },
   fpsLimit: 60,
   particles: {
     color: {
@@ -30,20 +25,20 @@ const particlesOptions = {
     move: {
       direction: "none",
       enable: true,
-      //outMode: "bounce",
+      outMode: "bounce",
       random: false,
-      speed: 6,
+      speed: 3,
       straight: false,
     },
     number: {
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 300,
       },
       value: 30,
     },
     opacity: {
-      value: 0.5,
+      value: 0.4,
     },
     shape: {
       type: "circle",
