@@ -3,35 +3,57 @@ import './App.css';
 import SignIn from './containers/signin/SignIn';
 import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
-import Particles from 'react-particles-js';
+import Particles from 'react-tsparticles';
 import 'tachyons';
 
 const particlesOptions = {
+  background: {
+    color: {
+      value: "#0d47a1",
+    },
+  },
+  fpsLimit: 60,
   particles: {
+    color: {
+      value: "#ffffff",
+    },
+    links: {
+      color: "#ffffff",
+      distance: 150,
+      enable: true,
+      opacity: 0.5,
+      width: 1,
+    },
+    collisions: {
+      enable: true,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      //outMode: "bounce",
+      random: false,
+      speed: 6,
+      straight: false,
+    },
     number: {
-      value: 30,
       density: {
         enable: true,
-        value_area: 150
-      }
+        value_area: 800,
+      },
+      value: 30,
+    },
+    opacity: {
+      value: 0.5,
+    },
+    shape: {
+      type: "circle",
     },
     size: {
-      "value": 5,
-      "random": true,
-      "anim": {
-        "enable": true,
-        "speed": 80,
-        "size_min": 1000,
-        "sync": false
-      }
+      random: true,
+      value: 5,
     },
-    "line_linked": {
-      "enable": true,
-      "distance": 155,
-      "opacity": 0.4,
-      "width": 2
-    },
-  }
+  },
+  detectRetina: true
 }
 
 // state when user logs in
