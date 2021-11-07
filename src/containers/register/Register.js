@@ -59,6 +59,16 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="userName"
+                  label="User Name"
+                  name="userName"
+                  autoComplete="disabled"
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
@@ -68,7 +78,6 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  sx={{backgroundColor:'none'}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

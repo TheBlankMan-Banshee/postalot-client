@@ -13,13 +13,13 @@ const particlesOptions = {
     },
     links: {
       color: "#ffffff",
-      distance: 150,
       enable: true,
-      opacity: 0.5,
-      width: 1,
+      distance: 155,
+      opacity: 0.4,
+      width: 2
     },
     collisions: {
-      enable: true,
+      enable: false,
     },
     move: {
       direction: "none",
@@ -32,7 +32,7 @@ const particlesOptions = {
     number: {
       density: {
         enable: true,
-        value_area: 300,
+        value_area: 300 ,
       },
       value: 30,
     },
@@ -45,6 +45,8 @@ const particlesOptions = {
     size: {
       random: true,
       value: 6,
+      size_min: 1000,
+      sync: false
     },
   },
   detectRetina: true
