@@ -5,6 +5,7 @@ import {ReactComponent as Explore} from "../../images/explore.svg";
 import {ReactComponent as NewPost} from "../../images/new.svg";
 import {ReactComponent as Like} from "../../images/like.svg";
 import ProfileIcon from "./ProfileIcon";
+import image from "../../images/postalot_icon.png";
 
 function Menu() {
     return (
@@ -14,7 +15,7 @@ function Menu() {
             <Explore className="icon"/>
             <NewPost className="icon"/>
             <Like className="icon"/>
-            <ProfileIcon />
+            <ProfileIcon iconSize="small" image={image} storyBorder={true}/>
         </div>
     )
 }

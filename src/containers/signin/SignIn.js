@@ -88,7 +88,7 @@ export default function SignIn({onRouteChange}) {
             </Button>
             <Grid container>
               <Grid item xs>
-                  <a href='#'>Forgot password?</a>
+                  <a href='https://reactjs.org/docs/getting-started.html'>Forgot password?</a>
               </Grid>
               <Grid item>
                 <a ><u><p id="register" onClick={() => onRouteChange('Register')}>

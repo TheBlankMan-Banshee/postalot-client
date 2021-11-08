@@ -5,6 +5,8 @@ import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
 import NavBar from './components/navigation/NavBar';
 import Particles from 'react-tsparticles';
+import Cards from "./components/page/Cards";
+import SideBar from "./components/page/SideBar";
 import "./styles/App.scss"
 import 'tachyons';
 
@@ -97,6 +99,12 @@ class App extends Component {
           { this.state.route === 'Home' ?
             <>
               <NavBar/>
+              <main>
+                  <div className="container">
+                    <Cards/>
+                    <SideBar/>
+                  </div>
+              </main>
             </>
             : (
               route === 'signIn' ?
