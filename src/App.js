@@ -5,7 +5,7 @@ import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
 import NavBar from './components/navigation/NavBar';
 import Particles from 'react-tsparticles';
-import Menu from "./components/menu/Menu";
+import "./styles/App.scss"
 import 'tachyons';
 
 const particlesOptions = {

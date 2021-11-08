@@ -4,8 +4,7 @@ import {ReactComponent as Message} from "../../images/message.svg";
 import {ReactComponent as Explore} from "../../images/explore.svg";
 import {ReactComponent as NewPost} from "../../images/new.svg";
 import {ReactComponent as Like} from "../../images/like.svg";
-
-
+import ProfileIcon from "./ProfileIcon";
 
 function Menu() {
     return (
@@ -15,6 +14,7 @@ function Menu() {
             <Explore className="icon"/>
             <NewPost className="icon"/>
             <Like className="icon"/>
+            <ProfileIcon />
         </div>
     )
 }
