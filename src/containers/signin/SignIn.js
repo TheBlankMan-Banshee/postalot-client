@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -17,18 +16,15 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Postalot
-      </Link>{' '}
+        Postalot<br/> 
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({onRouteChange}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -92,14 +88,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                  <a href='#'>Forgot password?</a>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <a ><u><p id="register" onClick={() => onRouteChange('Register')}>
+                  Don't have an account? Register
+                </p></u></a>
               </Grid>
             </Grid>
           </Box>

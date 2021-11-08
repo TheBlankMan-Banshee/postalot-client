@@ -17,24 +17,24 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Postalot
-      </Link>{' '}
+        Postalot<br/>
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      userName: data.get('userName'),
+      firstName: data.get('firstName'),
+      lastName: data.get('lastName'),
       email: data.get('email'),
-      password: data.get('password'),
+      password: data.get('password')
     });
   };
 
@@ -128,7 +128,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="../signin/SignIn.js" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

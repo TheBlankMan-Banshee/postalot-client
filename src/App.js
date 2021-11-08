@@ -91,19 +91,19 @@ class App extends Component {
   render() {
     const { isSignedIn, route} = this.state; // Destructuring
     return (
-      <div className="App">
-        <Particles className="particles" params={particlesOptions} />
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-        { this.state.route === 'Home' ?
-          <div>
-              POSTALOT being maintained...
-          </div> : (
-            route === 'signIn' ?
-            <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/> :
-            <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          )
-        }
-      </div>
+        <div className="App">
+          <Particles className="particles" params={particlesOptions} />
+          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+          { this.state.route === 'Home' ?
+            <div>
+                POSTALOT being maintained...
+            </div> : (
+              route === 'signIn' ?
+              <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>:
+              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+            )
+          }
+        </div>
     );
   }
 }
