@@ -3,7 +3,9 @@ import './App.css';
 import SignIn from './containers/signin/SignIn';
 import Register from './containers/register/Register';
 import Navigation from './components/navigation/navigation';
+import NavBar from './components/navigation/NavBar';
 import Particles from 'react-tsparticles';
+import Menu from "./components/menu/Menu";
 import 'tachyons';
 
 const particlesOptions = {
@@ -54,7 +56,7 @@ const particlesOptions = {
 
 // state when user logs in
 const initialState = {
-  route: 'signIn',
+  route: 'Home',
   isSignedIn: false,
   userProfile: {
       id: '',
@@ -92,15 +94,22 @@ class App extends Component {
     const { isSignedIn, route} = this.state; // Destructuring
     return (
         <div className="App">
-          <Particles className="particles" params={particlesOptions} />
-          <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
           { this.state.route === 'Home' ?
-            <div>
-                POSTALOT being maintained...
-            </div> : (
+            <>
+              <NavBar/>
+            </>
+            : (
               route === 'signIn' ?
-              <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>:
-              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              <>
+                <Particles className="particles" params={particlesOptions} />,
+                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+                <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              </>:
+              <>
+                <Particles className="particles" params={particlesOptions} />,
+                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>,
+                <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              </>
             )
           }
         </div>
