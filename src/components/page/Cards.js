@@ -1,11 +1,12 @@
-import "../../styles/Stories.scss";
+import "../../styles/Cards.scss";
+import Stories from "../page/Stories"
 
-function Stories() {
+function Cards() {
     return (
-        <div className="stories">
-            
+        <div className="cards">
+            <Stories/>
         </div>
     )    
 }
 
-export default Stories;
+export default Cards;
