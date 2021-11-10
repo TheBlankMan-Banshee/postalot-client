@@ -6,6 +6,7 @@ import Navigation from './components/navigation/navigation';
 import NavBar from './components/navigation/NavBar';
 import Particles from 'react-tsparticles';
 import SideBar from "./components/page/SideBar";
+import Cards from "./components/page/Cards";
 import "./styles/App.scss"
 import 'tachyons';
 
@@ -100,6 +101,7 @@ class App extends Component {
               <NavBar/>
               <main>
                   <div className="container">
+                      <Cards/>
                       <SideBar/>
                   </div>
               </main>
