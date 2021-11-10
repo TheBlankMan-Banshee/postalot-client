@@ -1,4 +1,4 @@
-import "../styles/comment.scss";
+import "../../styles/comment.scss";
 
 function Comment(props) {
   const { accountName, comment } = props;
