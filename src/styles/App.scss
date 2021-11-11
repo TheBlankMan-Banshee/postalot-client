@@ -30,7 +30,13 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
-  main .container {
-    justify-content: center !important;
-  }
+  main {
+    background: linear-gradient(89deg, #FF5EDF 20%, #04C8DE 100%) 
+    no-repeat center center fixed;
+    background-size: cover;
+    .container {
+      justify-content: center !important;
+    }
+  } 
+    
 }

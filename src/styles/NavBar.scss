@@ -58,4 +58,18 @@
   .search {
     display: none !important;
   }
-}
+
+  .navigation {
+    .container {
+      margin-bottom: 10px;
+      .logo {
+        margin-bottom: 0.5em;
+        padding: 0 1em;
+        width: 150px;
+    
+        &:hover {
+          cursor: pointer;
+        }
+    }
+  }
+}}
