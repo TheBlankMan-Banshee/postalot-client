@@ -16,7 +16,6 @@
     .accountName {
       font-weight: 700;
       margin-bottom: 5px;
-      margin-right: -300px;
 
       &:hover {
         cursor: pointer;
@@ -36,5 +35,11 @@
   a {
     text-align: left;
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .profile .textContainer .accountName {
+      margin-left: 250px;
   }
 }
