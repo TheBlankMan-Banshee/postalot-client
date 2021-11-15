@@ -7,8 +7,6 @@ import Particles from 'react-tsparticles';
 import SideBar from "./components/page/SideBar";
 import Cards from "./components/page/Cards";
 import "./styles/App.scss"
-    // eslint-disable-next-line no-console
-import 'tachyons';
 
 const particlesOptions = {
   particles: {
