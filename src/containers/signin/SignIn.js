@@ -28,10 +28,8 @@ export default function SignIn({onRouteChange}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get('email')
     });
   };
 
@@ -44,7 +42,7 @@ export default function SignIn({onRouteChange}) {
             marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'center'
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

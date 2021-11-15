@@ -1,7 +1,6 @@
 import "../../styles/card.scss";
 import Profile from "./Profile";
 import { ReactComponent as CardButton } from "../../images/cardButton.svg";
-import CardMenu from "./CardMenu";
 
 function Card(props) {
   const {
@@ -17,10 +16,6 @@ function Card(props) {
         <CardButton className="cardButton" />
       </header>
       <img className="cardImage" src={image} alt="card content" />
-      <CardMenu />
-      <div className="likedBy">
-        <Profile iconSize="small" hideAccountName={true} />
-      </div>
       <div className="timePosted">{hours} HOURS AGO</div>
     </div>
   );

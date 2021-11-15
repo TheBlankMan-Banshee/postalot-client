@@ -9,7 +9,7 @@ function Cards() {
         accountName="rafagrassetti"
         storyBorder={true}
         image="https://picsum.photos/800/900"
-        hours={16}
+        hours={new Date().getHours()}
       />
       <Card
         accountName="mapvault"

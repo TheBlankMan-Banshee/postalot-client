@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from './containers/signin/SignIn';
 import Register from './containers/register/Register';
-import Navigation from './components/navigation/navigation';
 import NavBar from './components/navigation/NavBar';
 import Particles from 'react-tsparticles';
 import SideBar from "./components/page/SideBar";
 import Cards from "./components/page/Cards";
 import "./styles/App.scss"
+    // eslint-disable-next-line no-console
 import 'tachyons';
 
 const particlesOptions = {
@@ -109,13 +109,11 @@ class App extends Component {
             : (
               route === 'signIn' ?
               <>
-                <Particles className="particles" params={particlesOptions} />,
-                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+                <Particles className="particles" params={particlesOptions} />
                 <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
               </>:
               <>
-                <Particles className="particles" params={particlesOptions} />,
-                <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>,
+                <Particles className="particles" params={particlesOptions} />
                 <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
               </>
             )
