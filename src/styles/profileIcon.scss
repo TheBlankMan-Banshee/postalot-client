@@ -1,0 +1,47 @@
+@import "../styles/properties.scss";
+
+.storyBorder {
+  margin-top: -0.3em;
+  height: 35px;
+  width: 35px;
+  background: linear-gradient(
+    200deg,
+    $gradient-one 25%,
+    $gradient-two 50%,
+    $gradient-three 75%,
+    $gradient-four 100%
+  );
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  border-color: 2px solid $gradient-two;
+  display: block;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.small {
+    width: 25px;
+    height: 25px;
+  }
+
+  &.medium {
+    width: 35px;
+    height: 35px;
+  }
+
+  &.big {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .storyBorder {
+      background: none;
+  }
+}
