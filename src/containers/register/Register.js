@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -25,11 +25,39 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Register() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-  };
+export default function Register(props) {
+  const [username,setUserName] = useState('');
+  const [firstname,setFirstName] = useState('');
+  const [lastname,setLastName] = useState('');
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const [isactive,setActive] = useState(true);
+  const [joinedDate,setDate] = useState(new Date());
+
+  const onRegister = () => {
+    fetch('https://postalot-server.herokuapp.com/api/users', { 
+        method: 'post',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            password: password,
+            isActive: isactive,
+            joinedDate: joinedDate
+        })
+    })
+    .then(res => res.json())
+    .then(console.log(username,firstname,lastname,email))
+    .then(user => {
+        if (user.id) {
+            props.loadUser(user);
+            props.onRouteChange('signIn');
+            console.log(user);
+        }
+    });
+  }  
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,7 +78,7 @@ export default function Register() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
@@ -60,6 +88,7 @@ export default function Register() {
                   label="User Name"
                   name="userName"
                   autoComplete="disabled"
+                  onChange={e => setUserName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -71,6 +100,7 @@ export default function Register() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={e => setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -81,6 +111,7 @@ export default function Register() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={e => setLastName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -91,6 +122,7 @@ export default function Register() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={e => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -102,6 +134,7 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={e => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -116,6 +149,7 @@ export default function Register() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={onRegister}
             >
               Sign Up
             </Button>

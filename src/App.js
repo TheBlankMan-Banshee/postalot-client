@@ -56,13 +56,17 @@ const particlesOptions = {
 
 // state when user logs in
 const initialState = {
-  route: 'Home',
+  route: 'signIn',
   isSignedIn: false,
   userProfile: {
       id: '',
-      name: '',
+      username: '',
+      firstname: '',
+      lastname: '',
       email: '',
-      password: ''
+      password: '',
+      isactive: true,
+      joinedDate: ''
   }
 }
 
@@ -84,14 +88,18 @@ class App extends Component {
   loadUser = (data) => {
       this.setState({userProfile: {
         id: data.id,
-        name: data.name,
+        username: data.username,
+        firstname: data.firstname,
+        lastname: data.lastname,
         email: data.email,
-        password: data.password
+        password: data.password,
+        isactive: data.isactive,
+        joinedDate: data.joinedDate
       }});
   }
 
   render() {
-    const { isSignedIn, route} = this.state; // Destructuring
+    const { isSignedIn, route} = this.state;
     return (
         <div className="App">
           { this.state.route === 'Home' ?
