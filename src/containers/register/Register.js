@@ -32,30 +32,30 @@ export default function Register(props) {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [isactive,setActive] = useState(true);
-  const [joinedDate,setDate] = useState(new Date());
+  const [joinedDate,setDate] = useState(new Date().toISOString().split('T')[0]);
+
+  const reqRegister = {
+    method: 'post',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+        username: username,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password,
+        isactive: isactive,
+        joineddate: joinedDate
+    })
+  }
 
   const onRegister = () => {
-    fetch('https://postalot-server.herokuapp.com/api/users', { 
-        method: 'post',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({
-            username: username,
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password,
-            isActive: isactive,
-            joinedDate: joinedDate
-        })
-    })
+    fetch('https://postalot-server.herokuapp.com/api/users', reqRegister)
     .then(res => res.json())
-    .then(console.log(username,firstname,lastname,email))
     .then(user => {
         if (user.id) {
             props.loadUser(user);
             props.onRouteChange('signIn');
-            console.log(user);
-        }
+          }
     });
   }  
 
@@ -78,7 +78,7 @@ export default function Register(props) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
+          <Box sx={{ mt: 3 }}>
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
@@ -88,7 +88,7 @@ export default function Register(props) {
                   label="User Name"
                   name="userName"
                   autoComplete="disabled"
-                  onChange={e => setUserName(e.target.value)}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -100,7 +100,7 @@ export default function Register(props) {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  onChange={e => setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -111,7 +111,7 @@ export default function Register(props) {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
-                  onChange={e => setLastName(e.target.value)}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -122,7 +122,7 @@ export default function Register(props) {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -134,7 +134,7 @@ export default function Register(props) {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
