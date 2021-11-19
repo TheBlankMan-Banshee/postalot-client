@@ -78,7 +78,7 @@ export default function Register(props) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box sx={{ mt: 3 }}>
+          <Box compnonent="form" noValidate method="POST" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
