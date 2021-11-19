@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -24,14 +24,35 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({onRouteChange}) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email')
+export default function SignIn(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userid, setUserId] = useState(0);
+  const [logindate, setDate] = useState("");
+
+  const users = fetch('https://postalot-server.herokuapp.com/api/users')
+  .then(res => res.json())
+  .then(user => console.log(user))
+
+  const reqSignIn = {
+    method: 'post',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+        userid: userid,
+        logindate: logindate
+    })
+  }
+
+  const onSignIn = () => {
+    fetch('https://postalot-server.herokuapp.com/api/UserLogins', reqSignIn)
+    .then(res => res.json())
+    .then(user => {
+        if (email && password) {
+            props.loadUser(user);
+            props.onRouteChange('Home');
+          }
     });
-  };
+  } 
 
   return (
     <ThemeProvider theme={theme}>
@@ -51,7 +72,7 @@ export default function SignIn({onRouteChange}) {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate method="POST" sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -60,6 +81,7 @@ export default function SignIn({onRouteChange}) {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
             <TextField
@@ -70,6 +92,7 @@ export default function SignIn({onRouteChange}) {
               label="Password"
               type="password"
               id="password"
+              onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -80,6 +103,7 @@ export default function SignIn({onRouteChange}) {
               type="submit"
               fullWidth
               variant="contained"
+              onClick={onSignIn}
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
@@ -89,7 +113,7 @@ export default function SignIn({onRouteChange}) {
                   <a href='https://reactjs.org/docs/getting-started.html'>Forgot password?</a>
               </Grid>
               <Grid item>
-                <a ><u><p id="register" onClick={() => onRouteChange('Register')}>
+                <a ><u><p id="register" onClick={() => props.onRouteChange('Register')}>
                   Don't have an account? Register
                 </p></u></a>
               </Grid>
