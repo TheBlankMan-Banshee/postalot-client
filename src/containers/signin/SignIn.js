@@ -27,24 +27,32 @@ const theme = createTheme();
 export default function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userid, setUserId] = useState(0);
-  const [logindate, setDate] = useState("");
 
-  const users = fetch('https://postalot-server.herokuapp.com/api/users')
-  .then(res => res.json())
-  .then(user => console.log(user))
+  // const fetchUsers = () => { 
+  //   fetch('https://postalot-server.herokuapp.com/api/users')
+  //   .then(res => res.json())
+  //   .then(user => console.log(user[0].username))
+  // }
 
   const reqSignIn = {
     method: 'post',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
-        userid: userid,
-        logindate: logindate
+        email: email,
+        password: password
     })
   }
 
+  // const checkCredentials = ( userid,email,users ) => {
+  //   for (let [key, value] of Object.entries(users)) {
+  //       if (key === 'email' && email === value) {
+  //         userid = users.id;
+  //         return userid;
+  //       }
+  // }}
+
   const onSignIn = () => {
-    fetch('https://postalot-server.herokuapp.com/api/UserLogins', reqSignIn)
+    fetch('https://postalot-server.herokuapp.com/api/users/login', reqSignIn)
     .then(res => res.json())
     .then(user => {
         if (email && password) {
@@ -82,6 +90,7 @@ export default function SignIn(props) {
               name="email"
               autoComplete="email"
               onChange={(e) => setEmail(e.target.value)}
+              // onClick={checkCredentials(userid,email,fetchUsers)}
               autoFocus
             />
             <TextField
