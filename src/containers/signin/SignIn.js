@@ -25,8 +25,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   // const fetchUsers = () => { 
   //   fetch('https://postalot-server.herokuapp.com/api/users')
@@ -55,10 +55,10 @@ export default function SignIn(props) {
     fetch('https://postalot-server.herokuapp.com/api/users/login', reqSignIn)
     .then(res => res.json())
     .then(user => {
-        if (email && password) {
-            props.loadUser(user);
-            props.onRouteChange('Home');
-          }
+      if (user.id) {
+        props.loadUser(user);
+        props.onRouteChange('Home');
+      }
     });
   } 
 
@@ -90,7 +90,6 @@ export default function SignIn(props) {
               name="email"
               autoComplete="email"
               onChange={(e) => setEmail(e.target.value)}
-              // onClick={checkCredentials(userid,email,fetchUsers)}
               autoFocus
             />
             <TextField
