@@ -28,12 +28,6 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const fetchUsers = () => { 
-  //   fetch('https://postalot-server.herokuapp.com/api/users')
-  //   .then(res => res.json())
-  //   .then(user => console.log(user[0].username))
-  // }
-
   const reqSignIn = {
     method: 'post',
     headers: {'Content-Type':'application/json'},
@@ -43,15 +37,8 @@ export default function SignIn(props) {
     })
   }
 
-  // const checkCredentials = ( userid,email,users ) => {
-  //   for (let [key, value] of Object.entries(users)) {
-  //       if (key === 'email' && email === value) {
-  //         userid = users.id;
-  //         return userid;
-  //       }
-  // }}
-
-  const onSignIn = () => {
+  const onSignIn = (event) => {
+    event.preventDefault(); // NB! Prevents a default action from happening
     fetch('https://postalot-server.herokuapp.com/api/users/login', reqSignIn)
     .then(res => res.json())
     .then(user => {
@@ -59,7 +46,7 @@ export default function SignIn(props) {
         props.loadUser(user);
         props.onRouteChange('Home');
       }
-    });
+    })
   } 
 
   return (
