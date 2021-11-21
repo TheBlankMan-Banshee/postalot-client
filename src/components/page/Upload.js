@@ -5,6 +5,11 @@ function Upload() {
     let [imagePreviewURL,setImgURL] = useState('');
     let [picture,setPicture] = useState('');
     
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('handle uploading-', this.state.file);
+    }
+
     const uploadImage = () => {
           const data = new FormData()
           data.append("file", picture)
@@ -21,18 +26,28 @@ function Upload() {
         .catch(err => console.log(err))
     }
 
+    let $imagePreview = null;
+    if (imagePreviewURL) {
+      $imagePreview = (<img src={imagePreviewURL} />);
+    } else {
+      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+    }
+
     return (
-        <div>
-            <div>
-                <input type="file" onChange= {(e)=> setPicture(e.target.files[0])}></input>
-                <button onClick={uploadImage}>Upload</button>
-            </div>
-            <div className='upload'>
-                <h1>Uploaded image will be displayed here</h1>
-                <img src={imagePreviewURL} className='img' />
-            </div>
+        <div className="previewComponent">
+          <form onSubmit={(e)=> handleSubmit(e)}>
+            <input className="fileInput" 
+              type="file" 
+              onChange={(e)=> setPicture(e.target.files[0])} />
+            <button className="submitButton" 
+              type="submit" 
+              onClick={uploadImage}>Upload Image</button>
+          </form>
+          <div className="imgPreview">
+            {$imagePreview}
+          </div>
         </div>
-    )
+      )
 }
 
 export default Upload;
