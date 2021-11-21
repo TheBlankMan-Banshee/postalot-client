@@ -2,7 +2,7 @@ import React from "react";
 import PlacesAutocomplete,{
     geocodeByAddress,
     getLatLng,
-}from 'react-places-autocomplete';
+} from 'react-places-autocomplete';
 
 class LocationSearchInput extends React.Component{
     constructor(props){
@@ -22,44 +22,49 @@ class LocationSearchInput extends React.Component{
         .catch(error => console.log('Error', error));
     };
 
-    render(){
-        <PlacesAutocomplete
-            value={this.state.address}
-            onChange={this.handleChange}
-            onSelect={this.handleSelect}
-        >
-            {({getInputProps, suggestions, getSuggestionItemProps, loading})=>(
-                <div>
-                    <input
-                        {...getInputProps({
-                            placeholder: 'Search Places ...',
-                            className= 'location-search-input',
-                        })}
-                    />
-                    <div className="autocomplete-dropdown-container">
-                        {loading&& <div>Loading...</div>}
-                        {suggestions.map(suggestion=>{
-                            const className= suggestion.active
-                                ? 'suggestion-item--active'
-                                : 'suggestion-item';
-                            const style = suggestion.active
-                                ?{backgroundColor: '#fafafa', cursor:'pointer'}
-                                :{backgroundColor: '#ffffff', cursor: 'pointer'};
-                        return(
-                            <div
-                                {...getSuggestionItemProps(suggestion, {
-                                    className,
-                                    style,
+    render() {
+        return (
+            <div>
+                <PlacesAutocomplete
+                    value={this.state.address}
+                    onChange={this.handleChange}
+                    onSelect={this.handleSelect}
+                >
+                    {({getInputProps, suggestions, getSuggestionItemProps, loading})=>(
+                        <div>
+                            <input
+                                {...getInputProps({
+                                    placeholder: 'Search Places ...',
+                                    className:'location-search-input',
                                 })}
-                            >
-                                <span>{suggestion.description}</span>
+                            />
+                            <div className="autocomplete-dropdown-container">
+                                {loading&& <div>Loading...</div>}
+                                {suggestions.map(suggestion=>{
+                                    const className= suggestion.active
+                                        ? 'suggestion-item--active'
+                                        : 'suggestion-item';
+                                    const style = suggestion.active
+                                        ?{backgroundColor: '#fafafa', cursor:'pointer'}
+                                        :{backgroundColor: '#ffffff', cursor: 'pointer'};
+                                return(
+                                    <div
+                                        {...getSuggestionItemProps(suggestion, {
+                                            className,
+                                            style,
+                                        })}
+                                    >
+                                        <span>{suggestion.description}</span>
+                                    </div>
+                                );
+                                })}
                             </div>
-                        );
-                        })}
-                    </div>
-                </div>
-            )}
-        </PlacesAutocomplete>
+                        </div>
+                    )}
+                </PlacesAutocomplete>
+                
+            </div>
+        )
     }
 }
 

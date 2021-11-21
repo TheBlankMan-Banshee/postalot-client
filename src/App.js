@@ -110,7 +110,6 @@ class App extends Component {
                   <div className="container">
                       <Cards/>
                       <SideBar/>
-                      {/* <Metadata/> */}
                   </div>
               </main>
             </>
