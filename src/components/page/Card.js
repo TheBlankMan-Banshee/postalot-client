@@ -13,9 +13,9 @@ function Card(props) {
     <div className="card">
       <header>
         <Profile iconSize="medium" storyBorder={storyBorder} />
-        <CardButton className="cardButton" />
+        <CardButton className="cardButton"/>
       </header>
-      <img className="cardImage" src={image} alt="card content" />
+      <img className="cardImage" src={image} alt="card content"/>
       <div className="timePosted">{hours} HOURS AGO</div>
     </div>
   );
