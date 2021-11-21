@@ -15,6 +15,10 @@ class LocationSearchInput extends React.Component{
     handleSelect = address =>{
         geocodeByAddress(address)
         .then(result => getLatLng(result[0]))
+        //Write Lat/Long to Cookies
+        //.then(({lat, lng})=>
+        //to cookie
+        //);
         .catch(error => console.log('Error', error));
     };
 
