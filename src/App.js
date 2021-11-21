@@ -7,6 +7,7 @@ import Particles from 'react-tsparticles';
 import SideBar from "./components/page/SideBar";
 import Cards from "./components/page/Cards";
 import "./styles/App.scss"
+import Metadata from './components/page/Metadata';
 
 const particlesOptions = {
   particles: {
@@ -109,6 +110,7 @@ class App extends Component {
                   <div className="container">
                       <Cards/>
                       <SideBar/>
+                      {/* <Metadata/> */}
                   </div>
               </main>
             </>
