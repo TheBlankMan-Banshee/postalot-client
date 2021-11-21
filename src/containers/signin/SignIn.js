@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PersonIcon from '@mui/icons-material/Person';
+import { useCookies } from 'react-cookie';  
 
 function Copyright(props) {
   return (
@@ -27,6 +28,7 @@ const theme = createTheme();
 export default function SignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [cookies, setCookie] = useCookies(['user']);
 
   const reqSignIn = {
     method: 'post',
@@ -39,6 +41,7 @@ export default function SignIn(props) {
 
   const onSignIn = (event) => {
     event.preventDefault(); // NB! Prevents a default action from happening
+    setCookie()
     fetch('https://postalot-server.herokuapp.com/api/users/login', reqSignIn)
     .then(res => res.json())
     .then(user => {
