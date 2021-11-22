@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -49,12 +49,21 @@ export default function SignIn(props) {
     .then(user => {
       if (user.id) {
         props.loadUser(user);
-        props.onRouteChange('Home');
         unicookie.set('user', user, {path:'/'});
         console.log("Unicookie set to value: ", unicookie.get('user'));
+        props.onRouteChange('Home');
       }
     })
   } 
+
+  useEffect(()=>{
+    if(unicookie){
+      props.onRouteChange("Home");
+    }
+  }
+  );
+
+  
 
   return (
     <ThemeProvider theme={theme}>
