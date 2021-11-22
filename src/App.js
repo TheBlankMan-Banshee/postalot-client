@@ -105,7 +105,7 @@ class App extends Component {
         <div className="App">
           { this.state.route === 'Home' ?
             <>
-              <NavBar/>
+              <NavBar onRouteChange={this.onRouteChange}/>
               <main>
                   <div className="container">
                       <Cards/>

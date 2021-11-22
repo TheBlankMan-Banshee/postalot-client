@@ -3,7 +3,7 @@ import logo from "../../images/postalot_icon.png";
 import searchIcon from "../../images/search_icon.png"
 import Menu from "../menu/Menu";
 
-function NavBar() {
+function NavBar(props) {
     return (
         <div className="navigation">
             <div className="container">
@@ -12,7 +12,7 @@ function NavBar() {
                     <img className="searchIcon" src={searchIcon} alt="Search.png"/>
                     <span className="searchText">Search</span>
                 </div>
-                <Menu/>
+                <Menu onRouteChange={props.onRouteChange}/>
             </div>
         </div>
     )
