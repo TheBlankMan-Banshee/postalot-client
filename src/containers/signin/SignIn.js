@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PersonIcon from '@mui/icons-material/Person';
 import { useCookies } from 'react-cookie';  
+import Cookies from 'universal-cookie';
 
 function Copyright(props) {
   return (
@@ -24,6 +25,7 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
+const unicookie = new Cookies();
 
 export default function SignIn(props) {
   const [email, setEmail] = useState('');
@@ -48,6 +50,8 @@ export default function SignIn(props) {
       if (user.id) {
         props.loadUser(user);
         props.onRouteChange('Home');
+        unicookie.set('user', user, {path:'/'});
+        console.log("Unicookie set to value: ", unicookie.get('user'));
       }
     })
   } 
