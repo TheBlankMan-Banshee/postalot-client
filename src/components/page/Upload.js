@@ -7,7 +7,7 @@ function Upload() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('handle uploading-', this.state.file);
+        console.log('handle uploading-', picture);
     }
 
     const uploadImage = () => {

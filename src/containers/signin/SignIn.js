@@ -11,8 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import PersonIcon from '@mui/icons-material/Person';
-import { useCookies } from 'react-cookie';  
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 function Copyright(props) {
   return (
@@ -25,12 +24,13 @@ function Copyright(props) {
 }
 
 const theme = createTheme();
-const unicookie = new Cookies();
+
+const uniCookie = new Cookies();
 
 export default function SignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cookies, setCookie] = useCookies(['user']);
+  const [user, setUser] = useState();
 
   const reqSignIn = {
     method: 'post',
@@ -43,27 +43,26 @@ export default function SignIn(props) {
 
   const onSignIn = (event) => {
     event.preventDefault(); // NB! Prevents a default action from happening
-    setCookie()
     fetch('https://postalot-server.herokuapp.com/api/users/login', reqSignIn)
     .then(res => res.json())
     .then(user => {
       if (user.id) {
         props.loadUser(user);
-        unicookie.set('user', user, {path:'/'});
-        console.log("Unicookie set to value: ", unicookie.get('user'));
-        props.onRouteChange('Home');
+        uniCookie.set('user',user,{path:'/'});
+        console.log(`Cookie set! ${uniCookie.get('user')}`);
+        props.onRouteChange('Home'); 
       }
     })
   } 
 
-  useEffect(()=>{
-    if(unicookie){
-      props.onRouteChange("Home");
+  useEffect(() => {
+    if (uniCookie.get('user')) {
+      props.onRouteChange('Home');
+    } else {
+      uniCookie.remove('user');
+      props.onRouteChange('signIn');
     }
-  }
-  );
-
-  
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

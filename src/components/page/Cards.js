@@ -1,5 +1,6 @@
 import "../../styles/cards.scss";
 import Card from "./Card";
+import Upload from "./Upload";
 
 function Cards() {
 
@@ -16,6 +17,7 @@ function Cards() {
 
   return (
     <div className="cards">
+      <Upload/>
       <Card
         accountName="rafagrassetti"
         storyBorder={true}
